@@ -17,11 +17,11 @@ export default function App() {
   const [listaDivisores, setListaDivisores] = useState<Array<number>>([]);
   const [modalVisible, setModalVisible] = useState<boolean>(false);
 
-  function aceptarPulsado() {
+  async function aceptarPulsado() {
     const { exito, valor } = toEnteroPositivo(texto);
     if (exito) {
-      const lista = calcularDivisores(valor);
-      setListaDivisores(lista);
+      const lista = await calcularDivisores(valor)
+       setListaDivisores(lista)
       setModalVisible(true);
     } else {
       Alert.alert("Error", "Debe introducirse un número entero positivo");
